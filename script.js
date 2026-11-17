@@ -1,4 +1,3 @@
-// Regras de negócio puras (testáveis via Node.js e usadas no navegador)
 function validarPromocao(titulo, dataInicio, dataFim, dataHoje) {
   if (typeof titulo !== 'string' || titulo.trim().length < 3) {
     return { valido: false, erro: 'Informe um título válido para a promoção (mínimo 3 caracteres).' };
@@ -37,6 +36,12 @@ function validarContaGoogle(email) {
   return /^[^\s@]+@(gmail\.com|googlemail\.com)$/.test(limpo);
 }
 
+function resolverModoContraste(preferenciaSalva, sistemaPedeAltoContraste) {
+  if (preferenciaSalva === 'ativo') return true;
+  if (preferenciaSalva === 'inativo') return false;
+  return Boolean(sistemaPedeAltoContraste);
+}
+
 function calcularDireitoLancheGratis(comprasNoCadastro) {
   const compras = Math.max(0, Number(comprasNoCadastro) || 0);
   const temDireitoGratis = compras >= 10;
@@ -65,13 +70,32 @@ if (typeof document !== 'undefined') {
   let clienteLogado = null;
   let comprasCliente = 0;
 
-  // Alternar Alto Contraste (Acessibilidade)
+  // Alternar Alto Contraste (Acessibilidade) — salvo no navegador e respeitando o sistema
+  const CHAVE_CONTRASTE = 'latinus-alto-contraste';
   const btnContraste = document.getElementById('btn-contraste');
+
+  function lerPreferenciaContraste() {
+    try { return localStorage.getItem(CHAVE_CONTRASTE); } catch (e) { return null; }
+  }
+
+  function salvarPreferenciaContraste(ativo) {
+    try { localStorage.setItem(CHAVE_CONTRASTE, ativo ? 'ativo' : 'inativo'); } catch (e) { /* ignora */ }
+  }
+
+  function aplicarAltoContraste(ativo) {
+    document.body.classList.toggle('alto-contraste', ativo);
+    if (btnContraste) btnContraste.setAttribute('aria-pressed', String(ativo));
+  }
+
+  const sistemaPedeContraste = typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-contrast: more)').matches;
+  aplicarAltoContraste(resolverModoContraste(lerPreferenciaContraste(), sistemaPedeContraste));
+
   if (btnContraste) {
     btnContraste.addEventListener('click', function () {
-      const ativo = document.body.classList.toggle('alto-contraste');
-      btnContraste.setAttribute('aria-pressed', String(ativo));
-      btnContraste.textContent = ativo ? 'Contraste Normal' : 'Alto Contraste';
+      const ativo = !document.body.classList.contains('alto-contraste');
+      aplicarAltoContraste(ativo);
+      salvarPreferenciaContraste(ativo);
     });
   }
 
@@ -420,6 +444,7 @@ validarPromocao,
 filtrarPromocoesAtivas,
 gerarTextoWhatsApp,
 validarContaGoogle,
-calcularDireitoLancheGratis
+calcularDireitoLancheGratis,
+resolverModoContraste
 };
 }
