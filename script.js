@@ -434,7 +434,7 @@ if (btnVerQrcode) {
 btnVerQrcode.addEventListener('click', function () {
 const boxQr = document.getElementById('box-qrcode');
 const imgQr = document.getElementById('img-qrcode');
-imgQr.src = 'qrserver.com' + encodeURIComponent(urlIfoodOficial);
+imgQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(urlIfoodOficial);
 boxQr.classList.remove('oculto');
 });
 }
