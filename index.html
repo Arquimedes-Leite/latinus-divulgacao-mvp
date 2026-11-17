@@ -3,33 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lanchonete Latinus - Cardápio e Promoções</title>
+  <title>Latinus — Lanchonete do Condomínio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Lanchonete Latinus</h1>
-    <p>Os melhores lanches artesanais da região.</p>
+  <header class="topo">
+    <div class="topo-conteudo">
+      <h1>Latinus</h1>
+      <div class="acoes-topo">
+        <button type="button" id="btn-contraste" class="btn-acessibilidade" aria-pressed="false">
+          Alto Contraste
+        </button>
+        <button type="button" id="btn-alternar-visao" class="btn-secundario-topo">
+          Painel do Proprietário
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section id="cardapio" class="cardapio">
-      <h2>Nosso Cardápio</h2>
-      <ul>
-        <li><strong>X-Latinus Especial</strong> — Hambúrguer artesanal, queijo cheddar e bacon — R$ 25,00</li>
-        <li><strong>X-Salada Clássico</strong> — Hambúrguer, queijo, alface, tomate e maionese da casa — R$ 18,00</li>
-        <li><strong>Combo Duplo</strong> — 2 X-Burgers + Batata Frita + Refrigerante 600ml — R$ 42,00</li>
-      </ul>
-    </section>
-    <section id="promocoes" class="promocoes">
-      <h2>Promoções do Dia</h2>
-      <p id="texto-promocao">Terça Maluca: Na compra de qualquer X-Latinus, ganhe uma porção de batata pequena!</p>
+  <main class="container">
+    <!-- ==================== VISÃO 1: PÁGINA PÚBLICA (MORADORES) ==================== -->
+    <section id="view-publica" aria-label="Página Pública da Lanchonete">
+      <div class="card">
+        <h2>Bem-vindo ao Latinus</h2>
+        <p>Lanches artesanais em um ambiente confortável e familiar perto de você.</p>
+        <ul class="info-local">
+          <li><strong>Localização:</strong> Setor Comercial do Condomínio, Loja 04 (próximo à praça interna)</li>
+          <li><strong>Horário:</strong> Terça a Domingo, das 18h00 às 23h00</li>
+          <li><strong>Contato:</strong> (61) 99999-0000</li>
+        </ul>
+        <div class="grupo-botoes">
+          <a href="#cardapio" class="btn-primario">Ver Cardápio</a>
+          <a href="https://wa.me" target="_blank" rel="noopener" class="btn-contorno">Pedir no WhatsApp</a>
+          <a href="https://ifood.com.br" target="_blank" rel="noopener" class="btn-contorno">Pedir no iFood</a>
+        </div>
+      </div>
 
-      <h3>Painel do Proprietário (Atualizar Promoção)</h3>
-      <form id="form-promocao">
-        <input type="text" id="nova-promocao" placeholder="Digite a nova promoção..." required>
-        <button type="submit">Publicar Promoção</button>
-      </form>
+      <div class="card" id="secao-promocoes-publica">
+        <h2>Promoções Ativas</h2>
+        <div id="lista-promocoes-publica"></div>
+      </div>
+
+      <div class="card" id="cardapio">
+        <h2>Cardápio</h2>
+        <ul class="lista-produtos">
+          <li>
+            <div>
+              <strong>X-Latinus Especial</strong>
+              <p>Hambúrguer artesanal 160g, queijo cheddar, bacon crocante e molho da casa.</p>
+            </div>
+            <span class="preco">R$ 25,00</span>
+          </li>
+          <li>
+            <div>
+              <strong>X-Salada Clássico</strong>
+              <p>Hambúrguer, queijo muçarela, alface americana, tomate e maionese temperada.</p>
+            </div>
+            <span class="preco">R$ 18,00</span>
+          </li>
+          <li>
+            <div>
+              <strong>Combo Lanche + Refri</strong>
+              <p>X-Burger completo + porção de batata frita + refrigerante lata.</p>
+            </div>
+            <span class="preco">R$ 25,00</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== VISÃO 2: PAINEL DO PROPRIETÁRIO ==================== -->
+    <section id="view-painel" class="oculto" aria-label="Painel do Proprietário">
+      
+      <!-- TELA 1A: LOGIN -->
+      <div id="tela-login" class="card">
+        <h2>Painel do Proprietário</h2>
+        <p class="subtitulo">Entre para cadastrar promoções e divulgar o Latinus.</p>
+        <form id="form-login" novalidate>
+          <div class="campo-grupo">
+            <label for="login-usuario">Usuário</label>
+            <input type="text" id="login-usuario" value="dono.latinus" required>
+          </div>
+          <div class="campo-grupo">
+            <label for="login-senha">Senha</label>
+            <input type="password" id="login-senha" value="latinus2026" required>
+          </div>
+          <div id="erro-login" class="alerta-erro oculto" role="alert">
+            <span>⚠️ Usuário ou senha inválidos. Confira os dados e tente de novo.</span>
+          </div>
+          <button type="submit" class="btn-primario largura-total">Entrar</button>
+        </form>
+      </div>
+
+      <!-- TELA 1B: MENU INICIAL DO PAINEL -->
+      <div id="tela-menu" class="card oculto">
+        <div class="cabecalho-interno">
+          <h2>Painel do proprietário</h2>
+          <button type="button" id="btn-sair" class="btn-pequeno">Sair</button>
+        </div>
+        <p class="subtitulo">O que você quer fazer agora?</p>
+        <div class="menu-empilhado">
+          <button type="button" id="btn-ir-nova-promocao" class="btn-primario largura-total">+ Nova promoção</button>
+          <button type="button" id="btn-ir-produtos" class="btn-contorno largura-total">Produtos</button>
+          <button type="button" id="btn-ir-divulgar" class="btn-contorno largura-total">Divulgar</button>
+        </div>
+        <p class="dica-uso">Dica: crie uma promoção e depois toque em "Divulgar" para enviar o link ao grupo dos moradores.</p>
+      </div>
+
+      <!-- TELA 2: NOVA PROMOÇÃO -->
+      <div id="tela-nova-promocao" class="card oculto">
+        <div class="cabecalho-interno">
+          <button type="button" id="btn-voltar-menu-1" class="btn-pequeno">&lt; Voltar</button>
+          <h2>Nova promoção</h2>
+        </div>
+        <form id="form-promocao" novalidate>
+          <div class="campo-grupo">
+            <label for="promo-titulo">Título</label>
+            <input type="text" id="promo-titulo" placeholder="Ex.: Combo Lanche + Refri" required>
+          </div>
+          <div class="campo-grupo">
+            <label for="promo-descricao">Descrição</label>
+            <textarea id="promo-descricao" rows="2" placeholder="Ex.: X-Burger com batata e refrigerante por R$ 25,00."></textarea>
+          </div>
+          <div class="campo-grupo">
+            <label for="promo-inicio">Data de início</label>
+            <input type="date" id="promo-inicio" required>
+          </div>
+          <div class="campo-grupo">
+            <label for="promo-fim">Data de fim</label>
+            <input type="date" id="promo-fim" required>
+            <small class="texto-ajuda">A promoção só aparece para os moradores entre essas datas.</small>
+          </div>
+          <div id="erro-promocao" class="alerta-erro oculto" role="alert"></div>
+          <div class="menu-empilhado">
+            <button type="submit" class="btn-primario largura-total">Salvar</button>
+            <button type="button" id="btn-cancelar-promocao" class="btn-contorno largura-total">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TELA 3: DIVULGAR -->
+      <div id="tela-divulgar" class="card oculto">
+        <div class="alerta-sucesso" role="status">
+          <strong>✔ Promoção salva!</strong>
+          <p id="resumo-promo-salva">Válida de 17/11/2026 a 22/11/2026</p>
+        </div>
+        <h3>Pronto para enviar aos moradores</h3>
+        <div class="campo-grupo">
+          <label for="texto-whatsapp">Texto pronto para o WhatsApp</label>
+          <textarea id="texto-whatsapp" rows="4" readonly></textarea>
+        </div>
+        <div class="menu-empilhado">
+          <button type="button" id="btn-copiar-whatsapp" class="btn-primario largura-total">Copiar texto do WhatsApp</button>
+          <button type="button" id="btn-copiar-link" class="btn-contorno largura-total">Copiar link</button>
+          <button type="button" id="btn-ver-qrcode" class="btn-contorno largura-total">Ver QR Code</button>
+          <button type="button" id="btn-voltar-menu-2" class="btn-pequeno">Voltar ao menu</button>
+        </div>
+        <div id="box-qrcode" class="qrcode-container oculto">
+          <p><strong>QR Code da Página Pública:</strong></p>
+          <img id="img-qrcode" alt="QR Code para acessar o cardápio e promoções do Latinus" width="160" height="160">
+        </div>
+      </div>
+
     </section>
   </main>
 
