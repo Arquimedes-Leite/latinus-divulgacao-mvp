@@ -1,3 +1,17 @@
+/*
+ * ALTERAÇÕES (correção do Alto Contraste) — sugestão de commit:
+ * "fix(acessibilidade): melhora o modo de alto contraste"
+ *
+ * - Links sem classe passam a ser amarelos e sublinhados (antes ficavam azul-padrão sobre preto).
+ * - Foco de teclado branco e mais espesso no alto contraste (o laranja sumia em botões amarelos/ciano).
+ * - Placeholders dos campos em branco opaco (antes cinza com baixo contraste).
+ * - Botões .btn-mostarda, .btn-mostarda-topo e .btn-comprar-moeda: texto preto sobre ciano.
+ * - .btn-contorno-claro, galeria, divisórias da lista de produtos e caixas: bordas brancas visíveis.
+ * - Botão "Alto Contraste" ganha estado visual quando pressionado ([aria-pressed="true"]).
+ * - Moeda ativa com borda preta e moeda-prêmio com borda sólida amarela (legíveis sem depender só da cor).
+ * - Suporte a @media (forced-colors: active) do Windows.
+ * - Novas regras ficam no FINAL do arquivo, na seção "ALTO CONTRASTE — CORREÇÕES".
+ */
 :root {
   --vermelho-ketchup: #c62828;
   --vermelho-escuro: #8e0000;
@@ -592,4 +606,99 @@ font-weight: 700;
 }
 .oculto {
 display: none !important;
+}
+
+/* ==================== ALTO CONTRASTE — CORREÇÕES ==================== */
+body.alto-contraste *:focus-visible {
+  outline: 4px solid #ffffff;
+  outline-offset: 3px;
+}
+
+body.alto-contraste a:not([class]) {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+body.alto-contraste a:not([class]):hover {
+  color: #00ffff;
+}
+
+body.alto-contraste ::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+body.alto-contraste .btn-mostarda,
+body.alto-contraste .btn-mostarda-topo,
+body.alto-contraste .btn-comprar-moeda {
+  color: #000000;
+}
+
+body.alto-contraste .btn-comprar-moeda {
+  border-color: #ffffff;
+}
+
+body.alto-contraste .btn-contorno-claro {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body.alto-contraste .btn-acessibilidade[aria-pressed="true"] {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+body.alto-contraste .selo-destaque {
+  color: #000000;
+}
+
+body.alto-contraste .tagline,
+body.alto-contraste .hero-card .info-local,
+body.alto-contraste .rodape {
+  color: #ffffff;
+}
+
+body.alto-contraste .rodape a {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+body.alto-contraste .moeda-slot.ativa {
+  border-color: #000000;
+}
+
+body.alto-contraste .moeda-slot.premio {
+  border: 2px solid #ffff00;
+  color: #ffff00;
+}
+
+body.alto-contraste .galeria-item,
+body.alto-contraste .mapa-container,
+body.alto-contraste .google-validacao-box,
+body.alto-contraste .alerta-erro,
+body.alto-contraste .alerta-sucesso {
+  border-width: 2px;
+}
+
+body.alto-contraste .galeria-item {
+  border-color: #ffffff;
+}
+
+body.alto-contraste .lista-produtos li {
+  border-bottom: 2px solid #ffffff;
+}
+
+body.alto-contraste .divisor {
+  border-top: 2px solid #ffffff;
+}
+
+/* Modo de cores forçadas do Windows */
+@media (forced-colors: active) {
+  button, .btn-primario, .btn-mostarda, .btn-contorno, .btn-contorno-claro, .btn-google {
+    border: 2px solid ButtonText;
+  }
+  *:focus-visible {
+    outline: 3px solid Highlight;
+  }
 }
