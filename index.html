@@ -192,3 +192,166 @@
         </div>
         <p class="descricao-mapa">
           <strong>Endereço:</strong> SH Jardins Condomínio Mansões Entrelagos, Etapa 2, CL 2, Lote 20 — Itapoã, Brasília - DF, 73255-901.
+        </p>
+        <div class="mapa-container">
+          <iframe title="Mapa da localização do Hot Dog Latinus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=SH+Jardins+Condom%C3%ADnio+Mans%C3%B5es+Entrelagos+Etapa+2+CL+2+Lote+20+Ita%C3%A3po+Bras%C3%ADlia+DF+73255-901&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VISÃO 2: CONTA DO CLIENTE ==================== -->
+    <section id="view-cliente-auth" class="oculto" aria-label="Conta do cliente">
+      <div class="card painel-box">
+        <div class="cabecalho-interno">
+          <h2>Minha Conta</h2>
+          <button type="button" id="btn-fechar-auth-cliente" class="btn-pequeno">Voltar ao site</button>
+        </div>
+
+        <button type="button" id="btn-login-google" class="btn-google largura-total">
+          <span class="google-g" aria-hidden="true">G</span> Entrar com Google
+        </button>
+
+        <div id="box-google-modal" class="google-validacao-box oculto">
+          <label for="google-email-input">Sua conta Google (@gmail.com)</label>
+          <input type="email" id="google-email-input" placeholder="seunome@gmail.com" autocomplete="email">
+          <div id="erro-google" class="alerta-erro oculto" role="alert"></div>
+          <button type="button" id="btn-confirmar-google" class="btn-primario">Confirmar conta Google</button>
+        </div>
+
+        <hr class="divisor">
+
+        <div class="abas-auth">
+          <button type="button" id="tab-criar-conta" class="btn-mostarda">Criar conta</button>
+          <button type="button" id="tab-entrar-conta" class="btn-contorno">Já tenho conta</button>
+        </div>
+
+        <form id="form-criar-conta" novalidate>
+          <div class="campo-grupo">
+            <label for="cad-nome">Nome</label>
+            <input type="text" id="cad-nome" autocomplete="name">
+          </div>
+          <div class="campo-grupo">
+            <label for="cad-email">E-mail</label>
+            <input type="email" id="cad-email" autocomplete="email">
+          </div>
+          <div class="campo-grupo">
+            <label for="cad-senha">Senha (mínimo 6 caracteres)</label>
+            <input type="password" id="cad-senha" autocomplete="new-password">
+          </div>
+          <div id="erro-cadastro-cliente" class="alerta-erro oculto" role="alert"></div>
+          <button type="submit" class="btn-primario largura-total">Criar minha conta</button>
+        </form>
+
+        <form id="form-entrar-cliente" class="oculto" novalidate>
+          <div class="campo-grupo">
+            <label for="entrar-email">E-mail</label>
+            <input type="email" id="entrar-email" autocomplete="email">
+          </div>
+          <div class="campo-grupo">
+            <label for="entrar-senha">Senha</label>
+            <input type="password" id="entrar-senha" autocomplete="current-password">
+          </div>
+          <div id="erro-entrar-cliente" class="alerta-erro oculto" role="alert"></div>
+          <button type="submit" class="btn-primario largura-total">Entrar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== VISÃO 3: PAINEL DO PROPRIETÁRIO ==================== -->
+    <section id="view-painel" class="oculto" aria-label="Painel do Proprietário">
+      <div class="card painel-box">
+
+        <!-- Login do proprietário -->
+        <div id="tela-login">
+          <div class="titulo-secao"><h2>🔒 Acesso do Proprietário</h2></div>
+          <form id="form-login" novalidate>
+            <div class="campo-grupo">
+              <label for="login-usuario">Usuário</label>
+              <input type="text" id="login-usuario" autocomplete="username">
+            </div>
+            <div class="campo-grupo">
+              <label for="login-senha">Senha</label>
+              <input type="password" id="login-senha" autocomplete="current-password">
+            </div>
+            <div id="erro-login" class="alerta-erro oculto" role="alert">⚠️ Usuário ou senha inválidos.</div>
+            <button type="submit" class="btn-primario largura-total">Entrar no painel</button>
+          </form>
+        </div>
+
+        <!-- Menu -->
+        <div id="tela-menu" class="oculto">
+          <div class="titulo-secao"><h2>Painel do Proprietário</h2></div>
+          <div class="menu-empilhado">
+            <button type="button" id="btn-ir-nova-promocao" class="btn-primario">Nova promoção</button>
+            <button type="button" id="btn-ir-produtos" class="btn-mostarda">Atualizar cardápio</button>
+            <button type="button" id="btn-ir-divulgar" class="btn-mostarda">Divulgar última promoção</button>
+            <button type="button" id="btn-sair" class="btn-contorno">Sair</button>
+          </div>
+        </div>
+
+        <!-- Nova promoção -->
+        <div id="tela-nova-promocao" class="oculto">
+          <div class="cabecalho-interno">
+            <h2>Nova promoção</h2>
+            <button type="button" id="btn-voltar-menu-1" class="btn-pequeno">Voltar</button>
+          </div>
+          <form id="form-promocao" novalidate>
+            <div class="campo-grupo">
+              <label for="promo-titulo">Título</label>
+              <input type="text" id="promo-titulo" placeholder="Ex.: Combo Hot Dog Duplo">
+            </div>
+            <div class="campo-grupo">
+              <label for="promo-descricao">Descrição</label>
+              <textarea id="promo-descricao" rows="3" placeholder="Ex.: 2 salsichas + refri lata"></textarea>
+            </div>
+            <div class="campo-grupo">
+              <label for="promo-inicio">Data de início</label>
+              <input type="date" id="promo-inicio">
+            </div>
+            <div class="campo-grupo">
+              <label for="promo-fim">Data de fim</label>
+              <input type="date" id="promo-fim">
+            </div>
+            <div id="erro-promocao" class="alerta-erro oculto" role="alert"></div>
+            <div class="grupo-botoes">
+              <button type="submit" class="btn-primario">Publicar promoção</button>
+              <button type="button" id="btn-cancelar-promocao" class="btn-contorno">Cancelar</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Divulgação -->
+        <div id="tela-divulgar" class="oculto">
+          <div class="cabecalho-interno">
+            <h2>Divulgar promoção</h2>
+            <button type="button" id="btn-voltar-menu-2" class="btn-pequeno">Voltar</button>
+          </div>
+          <p id="resumo-promo-salva" class="alerta-sucesso"></p>
+          <div class="campo-grupo">
+            <label for="texto-whatsapp">Texto para o grupo de WhatsApp</label>
+            <textarea id="texto-whatsapp" rows="7" readonly></textarea>
+          </div>
+          <div class="grupo-botoes">
+            <button type="button" id="btn-copiar-whatsapp" class="btn-primario">Copiar texto</button>
+            <button type="button" id="btn-copiar-link" class="btn-mostarda">Copiar link do iFood</button>
+            <button type="button" id="btn-ver-qrcode" class="btn-contorno">Ver QR Code</button>
+          </div>
+          <div id="box-qrcode" class="qrcode-container oculto">
+            <img id="img-qrcode" alt="QR Code do link oficial do Hot Dog Latinus no iFood" width="200" height="200">
+            <p class="texto-ajuda">Aponte a câmera do celular para abrir o link.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>🌭 Hot Dog Latinus — SH Jardins Cond. Mansões Entrelagos, Etapa 2, CL 2, Lote 20 — Itapoã, Brasília - DF</p>
+    <p>Instagram <a href="https://instagram.com" target="_blank" rel="noopener">@hotdoglatinus</a> · Pedidos no <a href="https://ifood.com.br" target="_blank" rel="noopener">iFood</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
