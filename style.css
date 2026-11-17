@@ -4,7 +4,7 @@
   --amarelo-mostarda: #f9a825;
   --amarelo-hover: #f57f17;
   --fundo-creme: #fffdf7;
-  --card-branco: #ffffff;
+  --card-branco: rgba(255, 255, 255, 0.97);
   --texto-escuro: #211c1a;
   --texto-suave: #5c534f;
   --borda-suave: #e6dfd5;
@@ -29,6 +29,8 @@ body.alto-contraste {
   --cor-erro-fundo: #2b0000;
   --cor-sucesso: #00ff66;
   --cor-sucesso-fundo: #002b11;
+  background-image: none !important;
+  background-color: #000000 !important;
 }
 
 * {
@@ -38,8 +40,15 @@ body.alto-contraste {
   font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
 }
 
+/* Papel de Parede de Hambúrguer Artesanal com camada escura para legibilidade */
 body {
-  background-color: var(--fundo-creme);
+  background-color: #1f1916;
+  background-image:
+    linear-gradient(rgba(26, 20, 17, 0.82), rgba(26, 20, 17, 0.88)),
+    url('https://unsplash.com');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--texto-escuro);
   line-height: 1.5;
   font-size: 16px;
@@ -57,7 +66,7 @@ body {
   color: #ffffff;
   padding: 1rem;
   border-bottom: 4px solid var(--amarelo-mostarda);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 body.alto-contraste .topo {
@@ -116,37 +125,50 @@ body.alto-contraste .topo {
   padding: 0 1rem;
 }
 
-/* Banner Principal */
+/* Banner Principal com Papel de Parede Próprio */
 .hero-card {
-  background-color: var(--card-branco);
+  background-image:
+    linear-gradient(rgba(20, 12, 10, 0.72), rgba(20, 12, 10, 0.82)),
+    url('https://unsplash.com');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
   border: 2px solid var(--amarelo-mostarda);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 14px;
+  padding: 1.75rem;
   margin-bottom: 1.25rem;
-  box-shadow: 0 4px 12px rgba(198, 40, 40, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+body.alto-contraste .hero-card {
+  background-image: none;
+  background-color: #000000;
+  border: 2px solid #ffff00;
 }
 
 .selo-destaque {
   display: inline-block;
-  background-color: #fff3cd;
-  color: #7c4d00;
-  font-weight: 700;
+  background-color: var(--amarelo-mostarda);
+  color: #211c1a;
+  font-weight: 800;
   font-size: 0.85rem;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
   margin-bottom: 0.75rem;
 }
 
-body.alto-contraste .selo-destaque {
-  background-color: #222;
-  color: #ffff00;
-  border: 1px solid #ffff00;
+.hero-card h2 {
+  color: #ffffff;
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
 }
 
-.hero-card h2 {
-  color: var(--vermelho-ketchup);
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+body.alto-contraste .hero-card h2 {
+  color: #ffff00;
+}
+
+.hero-card .info-local {
+  color: #f5efe6;
 }
 
 /* Cards */
@@ -156,7 +178,7 @@ body.alto-contraste .selo-destaque {
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .painel-box {
@@ -215,8 +237,28 @@ h2 {
   color: var(--texto-escuro);
 }
 
+/* Mapa Interativo */
+.descricao-mapa {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.mapa-container {
+  width: 100%;
+  height: 260px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--amarelo-mostarda);
+}
+
+.mapa-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* Botões com área de toque mínima 44x44px e 8px de espaço */
-button, .btn-primario, .btn-mostarda, .btn-contorno {
+button, .btn-primario, .btn-mostarda, .btn-contorno, .btn-contorno-claro {
   min-height: 44px;
   min-width: 44px;
   padding: 10px 18px;
@@ -229,7 +271,6 @@ button, .btn-primario, .btn-mostarda, .btn-contorno {
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: transform 0.1s ease, background-color 0.2s ease;
 }
 
 .btn-primario {
@@ -260,6 +301,12 @@ body.alto-contraste .btn-primario {
   background-color: transparent;
   color: var(--vermelho-ketchup);
   border: 2px solid var(--vermelho-ketchup);
+}
+
+.btn-contorno-claro {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .btn-acessibilidade {
@@ -333,8 +380,14 @@ input, textarea {
   border: 1.5px solid #8c827d;
   border-radius: 8px;
   font-size: 1rem;
-  background-color: var(--card-branco);
-  color: var(--texto-escuro);
+  background-color: #ffffff;
+  color: #211c1a;
+}
+
+body.alto-contraste input, body.alto-contraste textarea {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 .campo-invalido {
@@ -425,7 +478,7 @@ body.alto-contraste .preco {
   text-align: center;
   padding: 1.5rem 1rem;
   font-size: 0.85rem;
-  color: var(--texto-suave);
+  color: #f5efe6;
 }
 
 .oculto {
