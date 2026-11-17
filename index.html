@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Latinus Burgers — Lanchonete do Condomínio</title>
+  <title>Hot Dog Latinus — Condomínio Mansões Entrelagos</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topo">
     <div class="topo-conteudo">
       <div class="marca">
-        <span class="logo-badge">🍔</span>
+        <span class="logo-badge">🌭</span>
         <div>
-          <h1>Latinus</h1>
-          <span class="tagline">Burgers Artesanais &amp; Combos</span>
+          <h1>Hot Dog Latinus</h1>
+          <span class="tagline">O melhor Hot Dog da Região Entrelagos</span>
         </div>
       </div>
       <div class="acoes-topo">
@@ -29,22 +29,24 @@
 
   <main class="container">
     <!-- ==================== VISÃO 1: PÁGINA PÚBLICA (MORADORES) ==================== -->
-    <section id="view-publica" aria-label="Página Pública da Lanchonete">
+    <section id="view-publica" aria-label="Página Pública do Hot Dog Latinus">
       
-      <!-- Banner Hero com Foto de Fundo -->
+      <!-- Banner Hero com Papel de Parede -->
       <div class="hero-card">
         <div class="hero-texto">
-          <span class="selo-destaque">📍 Setor Comercial do Condomínio • Loja 04</span>
-          <h2>Sabor artesanal bem pertinho de você!</h2>
-          <p>Ambiente confortável e familiar para aproveitar um bom lanche sem sair do condomínio.</p>
+          <span class="selo-destaque">📍 SH Jardins • Mansões Entrelagos Etapa 2, CL 2, Lote 20</span>
+          <h2>O melhor Hot Dog da região, bem pertinho de você!</h2>
+          <p>Espaço confortável e familiar no setor comercial do condomínio, com entrega rápida no Entrelagos.</p>
           <ul class="info-local">
-            <li><strong>Horário:</strong> Terça a Domingo, das 18h00 às 23h00</li>
-            <li><strong>WhatsApp:</strong> (61) 99999-0000</li>
+            <li><strong>Endereço:</strong> SH Jardins Condomínio Mansões Entrelagos, Etapa 2, CL 2, Lote 20 — Itapoã, 73255-901</li>
+            <li><strong>Horário:</strong> Segunda a Domingo, das 17h00 às 23h00</li>
+            <li><strong>WhatsApp:</strong> (61) 98198-5510 • Pix, Débito e Crédito</li>
           </ul>
           <div class="grupo-botoes">
             <a href="#cardapio" class="btn-primario">Ver Cardápio</a>
-            <a href="https://wa.me" target="_blank" rel="noopener" class="btn-mostarda">Pedir no WhatsApp</a>
-            <a href="https://ifood.com.br" target="_blank" rel="noopener" class="btn-contorno-claro">Pedir no iFood</a>
+            <a href="https://www.ifood.com.br/delivery/brasilia-df/hot-dog-latinus-sobradinho/16915d6d-34db-4aa4-b0d0-924d9a59c159" target="_blank" rel="noopener" class="btn-mostarda">Pedir no iFood</a>
+            <a href="https://wa.me" target="_blank" rel="noopener" class="btn-contorno-claro">WhatsApp</a>
+            <a href="https://www.instagram.com/hotdoglatinus" target="_blank" rel="noopener" class="btn-contorno-claro">Instagram</a>
           </div>
         </div>
       </div>
@@ -58,90 +60,122 @@
         <div id="lista-promocoes-publica"></div>
       </div>
 
-      <!-- Galeria de Imagens -->
-          <div class="galeria-grid">
+      <!-- Galeria de Imagens (SVG nativo que nunca quebra) -->
+      <div class="card" id="galeria">
+        <div class="titulo-secao">
+          <h2>📸 Destaques da Casa</h2>
+          <span class="badge-info">Hot Dogs, Combos e Caldos</span>
+        </div>
+        <div class="galeria-grid">
           <figure class="galeria-item">
-            <svg viewBox="0 0 400 200" width="100%" height="160" role="img" aria-label="X-Latinus Especial com hambúrguer artesanal, queijo cheddar e bacon">
+            <svg viewBox="0 0 400 200" width="100%" height="160" role="img" aria-label="Hot Dog Tradicional no Pão Macio">
               <rect width="400" height="200" fill="#2b1d16"/>
-              <circle cx="200" cy="95" r="65" fill="#f9a825"/>
-              <rect x="125" y="82" width="150" height="24" rx="12" fill="#5d2e17"/>
-              <rect x="120" y="76" width="160" height="9" rx="4" fill="#fdd835"/>
-              <rect x="125" y="106" width="150" height="10" rx="5" fill="#c62828"/>
-              <text x="200" y="182" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">X-Latinus Especial • R$ 25,00</text>
+              <rect x="95" y="70" width="210" height="58" rx="29" fill="#f9a825"/>
+              <rect x="85" y="88" width="230" height="22" rx="11" fill="#c62828"/>
+              <path d="M105,98 Q130,85 155,98 T205,98 T255,98 T295,98" fill="none" stroke="#ffee58" stroke-width="5" stroke-linecap="round"/>
+              <text x="200" y="178" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Hot Dog Tradicional</text>
             </svg>
-            <figcaption>X-Latinus Especial</figcaption>
+            <figcaption>Hot Dog Tradicional</figcaption>
           </figure>
 
           <figure class="galeria-item">
-            <svg viewBox="0 0 400 200" width="100%" height="160" role="img" aria-label="Combo Duplo com dois hambúrgueres artesanais e queijo derretido">
+            <svg viewBox="0 0 400 200" width="100%" height="160" role="img" aria-label="Hot Dog Especial Duplo com Cheddar e Bacon">
               <rect width="400" height="200" fill="#3b1414"/>
-              <circle cx="200" cy="95" r="65" fill="#f9a825"/>
-              <rect x="125" y="74" width="150" height="20" rx="10" fill="#4e2612"/>
-              <rect x="125" y="102" width="150" height="20" rx="10" fill="#4e2612"/>
-              <rect x="120" y="94" width="160" height="8" rx="4" fill="#ffee58"/>
-              <text x="200" y="182" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Duplo Cheddar &amp; Bacon • R$ 32,00</text>
+              <rect x="90" y="65" width="220" height="66" rx="33" fill="#f9a825"/>
+              <rect x="80" y="80" width="240" height="16" rx="8" fill="#b71c1c"/>
+              <rect x="80" y="100" width="240" height="16" rx="8" fill="#d32f2f"/>
+              <path d="M100,98 Q125,84 150,98 T200,98 T250,98 T300,98" fill="none" stroke="#ffd54f" stroke-width="6" stroke-linecap="round"/>
+              <text x="200" y="178" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Hot Dog Especial Duplo</text>
             </svg>
-            <figcaption>Duplo Cheddar &amp; Bacon</figcaption>
+            <figcaption>Hot Dog Especial Duplo</figcaption>
           </figure>
 
           <figure class="galeria-item">
-            <svg viewBox="0 0 400 200" width="100%" height="160" role="img" aria-label="Porção de batatas fritas crocantes acompanhando o combo">
+            <svg viewBox="0 0 400 200" width="100%" height="160" role="img" aria-label="Caldos Quentinhos e Canjica Cremosa">
               <rect width="400" height="200" fill="#262018"/>
-              <polygon points="155,145 245,145 260,90 140,90" fill="#c62828"/>
-              <rect x="160" y="45" width="12" height="50" rx="3" fill="#f9a825"/>
-              <rect x="180" y="38" width="12" height="57" rx="3" fill="#fdd835"/>
-              <rect x="200" y="42" width="12" height="53" rx="3" fill="#f9a825"/>
-              <rect x="220" y="48" width="12" height="47" rx="3" fill="#fdd835"/>
-              <text x="200" y="182" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Combo Lanche + Fritas + Refri</text>
+              <path d="M135,90 L265,90 L248,142 Q200,152 152,142 Z" fill="#c62828"/>
+              <ellipse cx="200" cy="90" rx="65" ry="12" fill="#f9a825"/>
+              <path d="M175,65 Q170,52 178,42" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+              <path d="M200,62 Q195,49 203,39" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+              <path d="M225,65 Q220,52 228,42" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+              <text x="200" y="178" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Caldos &amp; Canjica Cremosa</text>
             </svg>
-            <figcaption>Fritas Crocantes da Casa</figcaption>
+            <figcaption>Caldos &amp; Canjica Cremosa</figcaption>
           </figure>
         </div>
+      </div>
 
-      <!-- Cardápio Completo -->
+      <!-- Cardápio Oficial -->
       <div class="card" id="cardapio">
         <div class="titulo-secao">
-          <h2>🍔 Cardápio Completo</h2>
+          <h2>🌭 Cardápio Hot Dog Latinus</h2>
+          <a href="https://www.ifood.com.br/delivery/brasilia-df/hot-dog-latinus-sobradinho/16915d6d-34db-4aa4-b0d0-924d9a59c159" target="_blank" rel="noopener" class="badge-info">Ver completo no iFood ↗</a>
         </div>
         <ul class="lista-produtos">
           <li>
             <div class="produto-info">
-              <strong>X-Latinus Especial</strong>
-              <p>Hambúrguer artesanal 160g, queijo cheddar cremoso, bacon crocante e molho especial no pão brioche.</p>
+              <strong>Hot Dog Simples / Tradicional</strong>
+              <p>Pão de hot dog macio, salsicha ao molho especial da casa, milho, ervilha, queijo ralado, batata palha e molhos.</p>
             </div>
-            <span class="preco">R$ 25,00</span>
+            <span class="preco">R$ 12,00</span>
           </li>
           <li>
             <div class="produto-info">
-              <strong>X-Salada Clássico</strong>
-              <p>Hambúrguer suculento, queijo muçarela, alface americana fresca, tomate e maionese temperada.</p>
+              <strong>Hot Dog Completo</strong>
+              <p>Pão macio, salsicha, purê cremoso, milho, ervilha, vinagrete fresco, queijo muçarela, batata palha e molhos.</p>
             </div>
-            <span class="preco">R$ 18,00</span>
+            <span class="preco">R$ 16,00</span>
           </li>
           <li>
             <div class="produto-info">
-              <strong>Combo Lanche + Refri</strong>
-              <p>X-Burger completo + porção individual de batata frita crocante + refrigerante lata gelado.</p>
+              <strong>Hot Dog Especial Duplo (Bacon &amp; Cheddar)</strong>
+              <p>Pão macio, 2 salsichas, bacon crocante em cubos, cheddar cremoso, milho, batata palha e molho especial.</p>
             </div>
-            <span class="preco">R$ 25,00</span>
+            <span class="preco">R$ 20,00</span>
+          </li>
+          <li>
+            <div class="produto-info">
+              <strong>Hot Dog na Chapa (Frango ou Calabresa)</strong>
+              <p>Pão prensado na chapa, salsicha, frango desfiado temperado ou calabresa acebolada, queijo derretido e batata palha.</p>
+            </div>
+            <span class="preco">R$ 22,00</span>
+          </li>
+          <li>
+            <div class="produto-info">
+              <strong>Combo Latinus (Hot Dog Completo + Refrigerante Lata)</strong>
+              <p>1 Hot Dog Completo caprichado + 1 refrigerante lata gelado 350ml.</p>
+            </div>
+            <span class="preco">R$ 21,00</span>
+          </li>
+          <li>
+            <div class="produto-info">
+              <strong>Caldo Quentinho / Canjica Cremosa (Pote 500ml)</strong>
+              <p>Opções da noite preparadas na hora para aquecer, acompanhadas de torradinhas ou canela/amendoim.</p>
+            </div>
+            <span class="preco">R$ 15,00</span>
           </li>
         </ul>
       </div>
 
-      <!-- Seção de Localização no Mapa -->
+      <!-- Seção de Localização no Mapa (com o seu iframe exato) -->
       <div class="card" id="localizacao">
         <div class="titulo-secao">
           <h2>🗺️ Onde Estamos no Condomínio</h2>
-          <span class="badge-info">Fácil acesso para moradores</span>
+          <span class="badge-info">Mansões Entrelagos • Etapa 2</span>
         </div>
         <p class="descricao-mapa">
-          <strong>Ponto de Referência:</strong> Setor Comercial do Condomínio, Loja 04 — Itapoã / Jardins, Brasília - DF.
+          <strong>Endereço Completo:</strong> SH Jardins Condomínio Mansões Entrelagos, Etapa 2, CL 2, Lote 20 — Itapoã, Brasília - DF, CEP 73255-901.
         </p>
         <div class="mapa-container">
           <iframe
-            title="Mapa de localização da Lanchonete Latinus no Setor Comercial do Condomínio"
-            src="https://openstreetmap.org"
-            loading="lazy">
+            title="Mapa de localização do Hot Dog Latinus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15360.589318865474!2d-47.7689731121063!3d-15.743343482046804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a17c18ca6f51f%3A0x388ac2b46cbeea8d!2sHOT%20DOG%20LATINUS!5e0!3m2!1spt-BR!2sbr!4v1794952279738!5m2!1spt-BR!2sbr"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">
           </iframe>
         </div>
         <div class="grupo-botoes">
@@ -159,79 +193,3 @@
       <!-- TELA 1A: LOGIN -->
       <div id="tela-login" class="card painel-box">
         <h2>Painel do Proprietário</h2>
-        <p class="subtitulo">Entre para cadastrar promoções e divulgar o Latinus aos moradores.</p>
-        <form id="form-login" novalidate>
-          <div class="campo-grupo">
-            <label for="login-usuario">Usuário</label>
-            <input type="text" id="login-usuario" value="dono.latinus" required>
-          </div>
-          <div class="campo-grupo">
-            <label for="login-senha">Senha</label>
-            <input type="password" id="login-senha" value="latinus2026" required>
-          </div>
-          <div id="erro-login" class="alerta-erro oculto" role="alert">
-            <span>⚠️ Usuário ou senha inválidos. Confira os dados e tente de novo.</span>
-          </div>
-          <button type="submit" class="btn-primario largura-total">Entrar</button>
-        </form>
-      </div>
-
-      <!-- TELA 1B: MENU INICIAL DO PAINEL -->
-      <div id="tela-menu" class="card painel-box oculto">
-        <div class="cabecalho-interno">
-          <h2>Painel do proprietário</h2>
-          <button type="button" id="btn-sair" class="btn-pequeno">Sair</button>
-        </div>
-        <p class="subtitulo">O que você quer fazer agora?</p>
-        <div class="menu-empilhado">
-          <button type="button" id="btn-ir-nova-promocao" class="btn-primario largura-total">+ Nova promoção</button>
-          <button type="button" id="btn-ir-produtos" class="btn-contorno largura-total">Produtos</button>
-          <button type="button" id="btn-ir-divulgar" class="btn-mostarda largura-total">Divulgar</button>
-        </div>
-        <p class="dica-uso">Dica: crie uma promoção e depois toque em "Divulgar" para enviar o link ao grupo dos moradores.</p>
-      </div>
-
-      <!-- TELA 2: NOVA PROMOÇÃO -->
-      <div id="tela-nova-promocao" class="card painel-box oculto">
-        <div class="cabecalho-interno">
-          <button type="button" id="btn-voltar-menu-1" class="btn-pequeno">&lt; Voltar</button>
-          <h2>Nova promoção</h2>
-        </div>
-        <form id="form-promocao" novalidate>
-          <div class="campo-grupo">
-            <label for="promo-titulo">Título</label>
-            <input type="text" id="promo-titulo" placeholder="Ex.: Combo Lanche + Refri" required>
-          </div>
-          <div class="campo-grupo">
-            <label for="promo-descricao">Descrição</label>
-            <textarea id="promo-descricao" rows="2" placeholder="Ex.: X-Burger com batata e refrigerante por R$ 25,00."></textarea>
-          </div>
-          <div class="campo-grupo">
-            <label for="promo-inicio">Data de início</label>
-            <input type="date" id="promo-inicio" required>
-          </div>
-          <div class="campo-grupo">
-            <label for="promo-fim">Data de fim</label>
-            <input type="date" id="promo-fim" required>
-            <small class="texto-ajuda">A promoção só aparece para os moradores entre essas datas.</small>
-          </div>
-          <div id="erro-promocao" class="alerta-erro oculto" role="alert"></div>
-          <div class="menu-empilhado">
-            <button type="submit" class="btn-primario largura-total">Salvar</button>
-            <button type="button" id="btn-cancelar-promocao" class="btn-contorno largura-total">Cancelar</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- TELA 3: DIVULGAR -->
-      <div id="tela-divulgar" class="card painel-box oculto">
-        <div class="alerta-sucesso" role="status">
-          <strong>✔ Promoção salva!</strong>
-          <p id="resumo-promo-salva">Válida de 17/11/2026 a 22/11/2026</p>
-        </div>
-        <h3>Pronto para enviar aos moradores</h3>
-        <div class="campo-grupo">
-          <label for="texto-whatsapp">Texto pronto para o WhatsApp</label>
-          <textarea id="texto-whatsapp" rows="4" readonly></textarea>
-        </div>
-        <div class="menu-empilhado">
