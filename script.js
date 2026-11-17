@@ -47,34 +47,40 @@ if (typeof document !== 'undefined') {
 
   // Alternar Alto Contraste (Acessibilidade)
   const btnContraste = document.getElementById('btn-contraste');
-  btnContraste.addEventListener('click', function () {
-    const ativo = document.body.classList.toggle('alto-contraste');
-    btnContraste.setAttribute('aria-pressed', String(ativo));
-    btnContraste.textContent = ativo ? 'Contraste Normal' : 'Alto Contraste';
-  });
+  if (btnContraste) {
+    btnContraste.addEventListener('click', function () {
+      const ativo = document.body.classList.toggle('alto-contraste');
+      btnContraste.setAttribute('aria-pressed', String(ativo));
+      btnContraste.textContent = ativo ? 'Contraste Normal' : 'Alto Contraste';
+    });
+  }
 
   // Alternar entre Página Pública e Painel do Proprietário
   const viewPublica = document.getElementById('view-publica');
   const viewPainel = document.getElementById('view-painel');
   const btnAlternarVisao = document.getElementById('btn-alternar-visao');
 
-  btnAlternarVisao.addEventListener('click', function () {
-    const mostrandoPainel = !viewPainel.classList.contains('oculto');
-    if (mostrandoPainel) {
-      viewPainel.classList.add('oculto');
-      viewPublica.classList.remove('oculto');
-      btnAlternarVisao.textContent = 'Painel do Proprietário';
-      renderizarPromocoesPublicas();
-    } else {
-      viewPublica.classList.add('oculto');
-      viewPainel.classList.remove('oculto');
-      btnAlternarVisao.textContent = 'Ver Página Pública';
-    }
-  });
+  if (btnAlternarVisao) {
+    btnAlternarVisao.addEventListener('click', function () {
+      const mostrandoPainel = !viewPainel.classList.contains('oculto');
+      if (mostrandoPainel) {
+        viewPainel.classList.add('oculto');
+        viewPublica.classList.remove('oculto');
+        btnAlternarVisao.textContent = 'Painel do Proprietário';
+        renderizarPromocoesPublicas();
+      } else {
+        viewPublica.classList.add('oculto');
+        viewPainel.classList.remove('oculto');
+        btnAlternarVisao.textContent = 'Ver Página Pública';
+      }
+    });
+  }
 
   // Renderizar promoções vigentes na Página Pública
   function renderizarPromocoesPublicas() {
     const container = document.getElementById('lista-promocoes-publica');
+    if (!container) return;
+
     const ativas = filtrarPromocoesAtivas(promocoesCadastradas, hojeISO);
     container.innerHTML = '';
 
@@ -110,89 +116,116 @@ if (typeof document !== 'undefined') {
 
   function mostrarTelaPainel(telaAlvo) {
     [telaLogin, telaMenu, telaNovaPromocao, telaDivulgar].forEach(function (t) {
-      t.classList.add('oculto');
+      if (t) t.classList.add('oculto');
     });
-    telaAlvo.classList.remove('oculto');
+    if (telaAlvo) telaAlvo.classList.remove('oculto');
   }
 
   // Tela 1: Login
-  document.getElementById('form-login').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const usuario = document.getElementById('login-usuario').value.trim();
-    const senha = document.getElementById('login-senha').value;
-    const erroLogin = document.getElementById('erro-login');
+  const formLogin = document.getElementById('form-login');
+  if (formLogin) {
+    formLogin.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const usuario = document.getElementById('login-usuario').value.trim();
+      const senha = document.getElementById('login-senha').value;
+      const erroLogin = document.getElementById('erro-login');
 
-    if (usuario === 'dono.latinus' && senha.length >= 6) {
-      erroLogin.classList.add('oculto');
+      if (usuario === 'dono.latinus' && senha.length >= 6) {
+        erroLogin.classList.add('oculto');
+        mostrarTelaPainel(telaMenu);
+      } else {
+        erroLogin.classList.remove('oculto');
+      }
+    });
+  }
+
+  const btnSair = document.getElementById('btn-sair');
+  if (btnSair) {
+    btnSair.addEventListener('click', function () {
+      mostrarTelaPainel(telaLogin);
+    });
+  }
+
+  const btnIrNovaPromocao = document.getElementById('btn-ir-nova-promocao');
+  if (btnIrNovaPromocao) {
+    btnIrNovaPromocao.addEventListener('click', function () {
+      document.getElementById('promo-inicio').value = hojeISO;
+      document.getElementById('erro-promocao').classList.add('oculto');
+      mostrarTelaPainel(telaNovaPromocao);
+    });
+  }
+
+  const btnIrProdutos = document.getElementById('btn-ir-produtos');
+  if (btnIrProdutos) {
+    btnIrProdutos.addEventListener('click', function () {
+      alert('Módulo de produtos disponível no cardápio principal (escopo priorizado em promoções).');
+    });
+  }
+
+  const btnIrDivulgar = document.getElementById('btn-ir-divulgar');
+  if (btnIrDivulgar) {
+    btnIrDivulgar.addEventListener('click', function () {
+      prepararTelaDivulgar(promocoesCadastradas[promocoesCadastradas.length - 1]);
+      mostrarTelaPainel(telaDivulgar);
+    });
+  }
+
+  const btnVoltarMenu1 = document.getElementById('btn-voltar-menu-1');
+  if (btnVoltarMenu1) {
+    btnVoltarMenu1.addEventListener('click', function () {
       mostrarTelaPainel(telaMenu);
-    } else {
-      erroLogin.classList.remove('oculto');
-    }
-  });
+    });
+  }
 
-  document.getElementById('btn-sair').addEventListener('click', function () {
-    mostrarTelaPainel(telaLogin);
-  });
+  const btnCancelarPromocao = document.getElementById('btn-cancelar-promocao');
+  if (btnCancelarPromocao) {
+    btnCancelarPromocao.addEventListener('click', function () {
+      mostrarTelaPainel(telaMenu);
+    });
+  }
 
-  document.getElementById('btn-ir-nova-promocao').addEventListener('click', function () {
-    document.getElementById('promo-inicio').value = hojeISO;
-    document.getElementById('erro-promocao').classList.add('oculto');
-    mostrarTelaPainel(telaNovaPromocao);
-  });
-
-  document.getElementById('btn-ir-produtos').addEventListener('click', function () {
-    alert('Módulo de produtos disponível no cardápio principal (escopo priorizado em promoções).');
-  });
-
-  document.getElementById('btn-ir-divulgar').addEventListener('click', function () {
-    prepararTelaDivulgar(promocoesCadastradas[promocoesCadastradas.length - 1]);
-    mostrarTelaPainel(telaDivulgar);
-  });
-
-  document.getElementById('btn-voltar-menu-1').addEventListener('click', function () {
-    mostrarTelaPainel(telaMenu);
-  });
-
-  document.getElementById('btn-cancelar-promocao').addEventListener('click', function () {
-    mostrarTelaPainel(telaMenu);
-  });
-
-  document.getElementById('btn-voltar-menu-2').addEventListener('click', function () {
-    mostrarTelaPainel(telaMenu);
-  });
+  const btnVoltarMenu2 = document.getElementById('btn-voltar-menu-2');
+  if (btnVoltarMenu2) {
+    btnVoltarMenu2.addEventListener('click', function () {
+      mostrarTelaPainel(telaMenu);
+    });
+  }
 
   // Tela 2: Cadastro de Nova Promoção
-  document.getElementById('form-promocao').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const inputTitulo = document.getElementById('promo-titulo');
-    const inputDesc = document.getElementById('promo-descricao');
-    const inputInicio = document.getElementById('promo-inicio');
-    const inputFim = document.getElementById('promo-fim');
-    const boxErro = document.getElementById('erro-promocao');
+  const formPromocao = document.getElementById('form-promocao');
+  if (formPromocao) {
+    formPromocao.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const inputTitulo = document.getElementById('promo-titulo');
+      const inputDesc = document.getElementById('promo-descricao');
+      const inputInicio = document.getElementById('promo-inicio');
+      const inputFim = document.getElementById('promo-fim');
+      const boxErro = document.getElementById('erro-promocao');
 
-    inputFim.classList.remove('campo-invalido');
-    const resultado = validarPromocao(inputTitulo.value, inputInicio.value, inputFim.value, hojeISO);
+      inputFim.classList.remove('campo-invalido');
+      const resultado = validarPromocao(inputTitulo.value, inputInicio.value, inputFim.value, hojeISO);
 
-    if (!resultado.valido) {
-      boxErro.textContent = '⚠️ ' + resultado.erro;
-      boxErro.classList.remove('oculto');
-      inputFim.classList.add('campo-invalido');
-      inputFim.focus();
-      return;
-    }
+      if (!resultado.valido) {
+        boxErro.textContent = '⚠️ ' + resultado.erro;
+        boxErro.classList.remove('oculto');
+        inputFim.classList.add('campo-invalido');
+        inputFim.focus();
+        return;
+      }
 
-    boxErro.classList.add('oculto');
-    const novaPromo = {
-      titulo: inputTitulo.value.trim(),
-      descricao: inputDesc.value.trim(),
-      dataInicio: inputInicio.value,
-      dataFim: inputFim.value
-    };
+      boxErro.classList.add('oculto');
+      const novaPromo = {
+        titulo: inputTitulo.value.trim(),
+        descricao: inputDesc.value.trim(),
+        dataInicio: inputInicio.value,
+        dataFim: inputFim.value
+      };
 
-    promocoesCadastradas.push(novaPromo);
-    prepararTelaDivulgar(novaPromo);
-    mostrarTelaPainel(telaDivulgar);
-  });
+      promocoesCadastradas.push(novaPromo);
+      prepararTelaDivulgar(novaPromo);
+      mostrarTelaPainel(telaDivulgar);
+    });
+  }
 
   // Tela 3: Divulgação
   function prepararTelaDivulgar(promo) {
@@ -202,23 +235,32 @@ if (typeof document !== 'undefined') {
     document.getElementById('box-qrcode').classList.add('oculto');
   }
 
-  document.getElementById('btn-copiar-whatsapp').addEventListener('click', function () {
-    const texto = document.getElementById('texto-whatsapp').value;
-    if (navigator.clipboard) navigator.clipboard.writeText(texto);
-    alert('Texto pronto copiado! Cole no grupo de WhatsApp dos moradores.');
-  });
+  const btnCopiarWhatsapp = document.getElementById('btn-copiar-whatsapp');
+  if (btnCopiarWhatsapp) {
+    btnCopiarWhatsapp.addEventListener('click', function () {
+      const texto = document.getElementById('texto-whatsapp').value;
+      if (navigator.clipboard) navigator.clipboard.writeText(texto);
+      alert('Texto pronto copiado! Cole no grupo de WhatsApp dos moradores.');
+    });
+  }
 
-  document.getElementById('btn-copiar-link').addEventListener('click', function () {
-    if (navigator.clipboard) navigator.clipboard.writeText(urlPublicaExemplo);
-    alert('Link da página pública copiado: ' + urlPublicaExemplo);
-  });
+  const btnCopiarLink = document.getElementById('btn-copiar-link');
+  if (btnCopiarLink) {
+    btnCopiarLink.addEventListener('click', function () {
+      if (navigator.clipboard) navigator.clipboard.writeText(urlPublicaExemplo);
+      alert('Link da página pública copiado: ' + urlPublicaExemplo);
+    });
+  }
 
-  document.getElementById('btn-ver-qrcode').addEventListener('click', function () {
-    const boxQr = document.getElementById('box-qrcode');
-    const imgQr = document.getElementById('img-qrcode');
-    imgQr.src = 'https://qrserver.com' + encodeURIComponent(urlPublicaExemplo);
-    boxQr.classList.remove('oculto');
-  });
+  const btnVerQrcode = document.getElementById('btn-ver-qrcode');
+  if (btnVerQrcode) {
+    btnVerQrcode.addEventListener('click', function () {
+      const boxQr = document.getElementById('box-qrcode');
+      const imgQr = document.getElementById('img-qrcode');
+      imgQr.src = 'https://qrserver.com' + encodeURIComponent(urlPublicaExemplo);
+      boxQr.classList.remove('oculto');
+    });
+  }
 }
 
 if (typeof module !== 'undefined') {
