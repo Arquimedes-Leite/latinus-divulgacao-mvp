@@ -1,11 +1,12 @@
-const test = require('node:test');
+onst test = require('node:test');
 const assert = require('node:assert');
 const {
   validarPromocao,
   filtrarPromocoesAtivas,
   gerarTextoWhatsApp,
   validarContaGoogle,
-  calcularDireitoLancheGratis
+  calcularDireitoLancheGratis,
+  resolverModoContraste
 } = require('./script.js');
 
 test('Teste Unitário: deve aceitar promoção com título e datas válidas', () => {
@@ -43,4 +44,14 @@ test('Teste de Integração: deve gerar texto formatado para divulgação no Wha
   const texto = gerarTextoWhatsApp(promo, 'https://ifood.com.br');
   assert.ok(texto.includes('Combo Hot Dog Duplo'));
   assert.ok(texto.includes('Entrelagos'));
+});
+
+test('Teste Unitário: preferência salva do usuário vence a preferência do sistema', () => {
+  assert.strictEqual(resolverModoContraste('ativo', false), true);
+  assert.strictEqual(resolverModoContraste('inativo', true), false);
+});
+
+test('Teste Unitário: sem preferência salva, alto contraste segue o sistema', () => {
+  assert.strictEqual(resolverModoContraste(null, true), true);
+  assert.strictEqual(resolverModoContraste(null, false), false);
 });
