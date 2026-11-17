@@ -31,7 +31,7 @@
     <!-- ==================== VISÃO 1: PÁGINA PÚBLICA (MORADORES) ==================== -->
     <section id="view-publica" aria-label="Página Pública da Lanchonete">
       
-      <!-- Banner Hero -->
+      <!-- Banner Hero com Foto de Fundo -->
       <div class="hero-card">
         <div class="hero-texto">
           <span class="selo-destaque">📍 Setor Comercial do Condomínio • Loja 04</span>
@@ -44,7 +44,7 @@
           <div class="grupo-botoes">
             <a href="#cardapio" class="btn-primario">Ver Cardápio</a>
             <a href="https://wa.me" target="_blank" rel="noopener" class="btn-mostarda">Pedir no WhatsApp</a>
-            <a href="https://ifood.com.br" target="_blank" rel="noopener" class="btn-contorno">Pedir no iFood</a>
+            <a href="https://ifood.com.br" target="_blank" rel="noopener" class="btn-contorno-claro">Pedir no iFood</a>
           </div>
         </div>
       </div>
@@ -109,6 +109,30 @@
           </li>
         </ul>
       </div>
+
+      <!-- Seção de Localização no Mapa -->
+      <div class="card" id="localizacao">
+        <div class="titulo-secao">
+          <h2>🗺️ Onde Estamos no Condomínio</h2>
+          <span class="badge-info">Fácil acesso para moradores</span>
+        </div>
+        <p class="descricao-mapa">
+          <strong>Ponto de Referência:</strong> Setor Comercial do Condomínio, Loja 04 — Itapoã / Jardins, Brasília - DF.
+        </p>
+        <div class="mapa-container">
+          <iframe
+            title="Mapa de localização da Lanchonete Latinus no Setor Comercial do Condomínio"
+            src="https://openstreetmap.org"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="grupo-botoes">
+          <a href="https://google.com" target="_blank" rel="noopener" class="btn-mostarda largura-total">
+            Abrir Rota no Google Maps
+          </a>
+        </div>
+      </div>
+
     </section>
 
     <!-- ==================== VISÃO 2: PAINEL DO PROPRIETÁRIO ==================== -->
@@ -193,24 +217,3 @@
           <textarea id="texto-whatsapp" rows="4" readonly></textarea>
         </div>
         <div class="menu-empilhado">
-          <button type="button" id="btn-copiar-whatsapp" class="btn-mostarda largura-total">Copiar texto do WhatsApp</button>
-          <button type="button" id="btn-copiar-link" class="btn-contorno largura-total">Copiar link</button>
-          <button type="button" id="btn-ver-qrcode" class="btn-contorno largura-total">Ver QR Code</button>
-          <button type="button" id="btn-voltar-menu-2" class="btn-pequeno">Voltar ao menu</button>
-        </div>
-        <div id="box-qrcode" class="qrcode-container oculto">
-          <p><strong>QR Code da Página Pública:</strong></p>
-          <img id="img-qrcode" alt="QR Code para acessar o cardápio e promoções do Latinus" width="160" height="160">
-        </div>
-      </div>
-
-    </section>
-  </main>
-
-  <footer class="rodape">
-    <p>Latinus Burgers • Setor Comercial do Condomínio • ODS 8 (Meta 8.3)</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
