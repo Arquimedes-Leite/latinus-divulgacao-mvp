@@ -49,7 +49,7 @@ function calcularDireitoLancheGratis(comprasNoCadastro) {
 
 // Lógica de interface (executa apenas no navegador)
 if (typeof document !== 'undefined') {
-  const hojeISO = new Date().toISOString().split('T');
+  const hojeISO = new Date().toISOString().split('T')[0];
   const urlIfoodOficial = 'https://ifood.com.br';
 
   let promocoesCadastradas = [
@@ -86,19 +86,20 @@ if (typeof document !== 'undefined') {
       if (v) v.classList.add('oculto');
     });
     if (visao) visao.classList.remove('oculto');
+    if (btnAlternarVisao) {
+      btnAlternarVisao.textContent = (visao === viewPainel) ? 'Ver Página Pública' : 'Painel do Proprietário';
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   if (btnAlternarVisao) {
     btnAlternarVisao.addEventListener('click', function () {
-      const mostrandoPainel = !viewPainel.classList.contains('oculto');
+      const mostrandoPainel = viewPainel && !viewPainel.classList.contains('oculto');
       if (mostrandoPainel) {
         mostrarVisaoPrincipal(viewPublica);
-        btnAlternarVisao.textContent = 'Painel do Proprietário';
         renderizarPromocoesPublicas();
       } else {
         mostrarVisaoPrincipal(viewPainel);
-        btnAlternarVisao.textContent = 'Ver Página Pública';
       }
     });
   }
@@ -206,7 +207,7 @@ if (typeof document !== 'undefined') {
       }
 
       erroGoogle.classList.add('oculto');
-      const nomeExtraido = emailGoogle.split('@');
+      const nomeExtraido = emailGoogle.split('@')[0];
       clienteLogado = { nome: nomeExtraido, email: emailGoogle, provedor: 'Google' };
       comprasCliente = 0;
       atualizarPainelFidelidade();
@@ -232,10 +233,9 @@ if (typeof document !== 'undefined') {
       formEntrarCliente.classList.remove('oculto');
       formCriarConta.classList.add('oculto');
       tabEntrarConta.className = 'btn-mostarda';
-      tabCriarConta.className = 'btn-contorno';
-    });
-  }
-
+tabCriarConta.className = 'btn-contorno';
+});
+}
 if (formCriarConta) {
 formCriarConta.addEventListener('submit', function (e) {
 e.preventDefault();
@@ -268,7 +268,7 @@ erroEntrar.classList.remove('oculto');
 return;
 }
 erroEntrar.classList.add('oculto');
-clienteLogado = { nome: email.split('@'), email: email, provedor: 'E-mail' };
+clienteLogado = { nome: email.split('@')[0], email: email, provedor: 'E-mail' };
 atualizarPainelFidelidade();
 mostrarVisaoPrincipal(viewPublica);
 });
