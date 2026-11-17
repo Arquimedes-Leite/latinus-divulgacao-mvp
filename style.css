@@ -40,21 +40,14 @@ body.alto-contraste {
   font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
 }
 
-/* Papel de Parede de Hambúrguer Artesanal com camada escura para legibilidade */
 body {
-  background-color: #1f1916;
-  background-image:
-    linear-gradient(rgba(26, 20, 17, 0.82), rgba(26, 20, 17, 0.88)),
-    url('https://unsplash.com');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: #211612;
+  background-image: radial-gradient(circle at top, #3b1e16 0%, #1a120f 100%);
   color: var(--texto-escuro);
   line-height: 1.5;
   font-size: 16px;
 }
 
-/* Foco visível exigido na documentação de acessibilidade */
 *:focus-visible {
   outline: 3px solid #ff6f00;
   outline-offset: 2px;
@@ -76,7 +69,7 @@ body.alto-contraste .topo {
 }
 
 .topo-conteudo {
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -103,35 +96,31 @@ body.alto-contraste .topo {
 }
 
 .marca h1 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   line-height: 1.1;
-  letter-spacing: -0.5px;
 }
 
 .tagline {
   font-size: 0.85rem;
   color: #ffe082;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .acoes-topo {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 .container {
-  max-width: 820px;
+  max-width: 860px;
   margin: 1.5rem auto;
   padding: 0 1rem;
 }
 
-/* Banner Principal com Papel de Parede Próprio */
+/* Banner Principal */
 .hero-card {
-  background-image:
-    linear-gradient(rgba(20, 12, 10, 0.72), rgba(20, 12, 10, 0.82)),
-    url('https://unsplash.com');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #2c1810 0%, #4a1515 100%);
   color: #ffffff;
   border: 2px solid var(--amarelo-mostarda);
   border-radius: 14px;
@@ -141,8 +130,7 @@ body.alto-contraste .topo {
 }
 
 body.alto-contraste .hero-card {
-  background-image: none;
-  background-color: #000000;
+  background: #000000;
   border: 2px solid #ffff00;
 }
 
@@ -152,14 +140,14 @@ body.alto-contraste .hero-card {
   color: #211c1a;
   font-weight: 800;
   font-size: 0.85rem;
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: 20px;
   margin-bottom: 0.75rem;
 }
 
 .hero-card h2 {
   color: #ffffff;
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   margin-bottom: 0.5rem;
 }
 
@@ -181,6 +169,14 @@ body.alto-contraste .hero-card h2 {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
+body.alto-contraste .card {
+  border: 2px solid #ffffff;
+}
+
+.card-fidelidade {
+  border: 2.5px solid var(--amarelo-mostarda);
+}
+
 .painel-box {
   max-width: 520px;
   margin: 0 auto 1.5rem auto;
@@ -199,19 +195,73 @@ body.alto-contraste .hero-card h2 {
 
 h2 {
   color: var(--vermelho-ketchup);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
 }
 
 .badge-info {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--texto-suave);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Galeria de Imagens */
+/* Fidelidade 10 Compras */
+.moedas-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 1rem 0 0.5rem 0;
+}
+
+@media (max-width: 480px) {
+  .moedas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.moeda-slot {
+  height: 48px;
+  border-radius: 10px;
+  border: 2px dashed #c4b5a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: #7a6f67;
+  background-color: #faf6ee;
+}
+
+body.alto-contraste .moeda-slot {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.moeda-slot.ativa {
+  background-color: var(--amarelo-mostarda);
+  border: 2px solid var(--vermelho-ketchup);
+  color: #211c1a;
+}
+
+body.alto-contraste .moeda-slot.ativa {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+.moeda-slot.premio {
+  border-color: var(--vermelho-ketchup);
+  color: var(--vermelho-ketchup);
+}
+
+.texto-progresso {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* Galeria SVG */
 .galeria-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
 }
 
@@ -222,10 +272,7 @@ h2 {
   background-color: var(--fundo-creme);
 }
 
-.galeria-item img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
+.galeria-item svg {
   display: block;
 }
 
@@ -234,7 +281,6 @@ h2 {
   font-weight: 700;
   font-size: 0.95rem;
   text-align: center;
-  color: var(--texto-escuro);
 }
 
 /* Mapa Interativo */
@@ -245,7 +291,7 @@ h2 {
 
 .mapa-container {
   width: 100%;
-  height: 260px;
+  height: 280px;
   border-radius: 10px;
   overflow: hidden;
   border: 2px solid var(--amarelo-mostarda);
@@ -257,13 +303,13 @@ h2 {
   border: 0;
 }
 
-/* Botões com área de toque mínima 44x44px e 8px de espaço */
-button, .btn-primario, .btn-mostarda, .btn-contorno, .btn-contorno-claro {
+/* Botões com área de toque mínima 44x44px */
+button, .btn-primario, .btn-mostarda, .btn-contorno, .btn-contorno-claro, .btn-google {
   min-height: 44px;
   min-width: 44px;
-  padding: 10px 18px;
+  padding: 10px 16px;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   cursor: pointer;
   text-decoration: none;
@@ -271,6 +317,11 @@ button, .btn-primario, .btn-mostarda, .btn-contorno, .btn-contorno-claro {
   align-items: center;
   justify-content: center;
   text-align: center;
+  transition: opacity 0.15s ease;
+}
+
+button:hover, .btn-primario:hover, .btn-mostarda:hover {
+  opacity: 0.92;
 }
 
 .btn-primario {
@@ -283,18 +334,22 @@ body.alto-contraste .btn-primario {
   color: #000000;
 }
 
-.btn-primario:hover {
-  background-color: var(--vermelho-escuro);
-}
-
-.btn-mostarda {
+.btn-mostarda, .btn-mostarda-topo {
   background-color: var(--amarelo-mostarda);
   color: #211c1a;
   border: 2px solid var(--amarelo-mostarda);
 }
 
-.btn-mostarda:hover {
-  background-color: var(--amarelo-hover);
+.btn-painel-topo {
+  background-color: #ffffff;
+  color: var(--vermelho-escuro);
+  border: 2px solid #ffffff;
+}
+
+body.alto-contraste .btn-painel-topo {
+  background-color: #00ffff;
+  color: #000000;
+  border-color: #00ffff;
 }
 
 .btn-contorno {
@@ -310,13 +365,10 @@ body.alto-contraste .btn-primario {
 }
 
 .btn-acessibilidade {
-  min-height: 44px;
-  padding: 8px 12px;
   background-color: transparent;
   color: #ffffff;
   border: 1.5px solid #ffffff;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 body.alto-contraste .btn-acessibilidade {
@@ -324,24 +376,75 @@ body.alto-contraste .btn-acessibilidade {
   border-color: #ffff00;
 }
 
-.btn-painel-topo {
-  min-height: 44px;
-  padding: 8px 14px;
-  background-color: var(--amarelo-mostarda);
-  color: #211c1a;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
 .btn-pequeno {
-  min-height: 44px;
-  padding: 6px 12px;
   background-color: transparent;
   color: var(--vermelho-ketchup);
   border: 1.5px solid var(--vermelho-ketchup);
+  font-size: 0.88rem;
+}
+
+.btn-comprar-moeda {
+  background-color: var(--amarelo-mostarda);
+  color: #211c1a;
+  border: 1.5px solid var(--vermelho-ketchup);
+  padding: 6px 12px;
+  font-size: 0.88rem;
+}
+
+/* Botão Google e Validação */
+.btn-google {
+  background-color: #ffffff;
+  color: #3c4043;
+  border: 1.5px solid #dadce0;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+
+body.alto-contraste .btn-google {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.google-g {
+  background-color: #4285f4;
+  color: #ffffff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.google-validacao-box {
+  background-color: #f8f9fa;
+  border: 1.5px solid #4285f4;
   border-radius: 8px;
-  font-size: 0.9rem;
+  padding: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.alto-contraste .google-validacao-box {
+  background-color: #000000;
+  border-color: #00ffff;
+}
+
+.divisor {
+  border: 0;
+  border-top: 1px solid var(--borda-suave);
+  margin: 1rem 0;
+}
+
+.abas-auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 1rem;
 }
 
 .largura-total {
@@ -362,7 +465,7 @@ body.alto-contraste .btn-acessibilidade {
   margin-top: 1rem;
 }
 
-/* Formulários e Acessibilidade */
+/* Formulários */
 .campo-grupo {
   margin-bottom: 1rem;
   display: flex;
@@ -426,61 +529,67 @@ body.alto-contraste input, body.alto-contraste textarea {
 .lista-produtos li {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--borda-suave);
-}
-
-.produto-info p {
-  font-size: 0.92rem;
-  color: var(--texto-suave);
-  margin-top: 2px;
-}
-
-.preco {
-  font-weight: 800;
-  font-size: 1.05rem;
-  background-color: #fff3cd;
-  color: #8e0000;
-  padding: 4px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-body.alto-contraste .preco {
-  background-color: #ffff00;
-  color: #000000;
-}
-
-.cabecalho-interno {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 12px;
+padding: 0.9rem 0;
+border-bottom: 1px solid var(--borda-suave);
 }
-
+.produto-info {
+flex: 1;
+min-width: 220px;
+}
+.produto-info p {
+font-size: 0.92rem;
+color: var(--texto-suave);
+margin-top: 2px;
+}
+.produto-acoes {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.preco {
+font-weight: 800;
+font-size: 1.05rem;
+background-color: #fff3cd;
+color: #8e0000;
+padding: 6px 10px;
+border-radius: 6px;
+white-space: nowrap;
+}
+body.alto-contraste .preco {
+background-color: #ffff00;
+color: #000000;
+}
+.cabecalho-interno {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 0.75rem;
+}
 .dica-uso, .texto-ajuda {
-  font-size: 0.875rem;
-  color: var(--texto-suave);
-  margin-top: 0.5rem;
+font-size: 0.875rem;
+color: var(--texto-suave);
+margin-top: 0.5rem;
 }
-
 .qrcode-container {
-  margin-top: 1rem;
-  text-align: center;
-  padding: 1rem;
-  border: 2px dashed var(--amarelo-mostarda);
-  border-radius: 8px;
+margin-top: 1rem;
+text-align: center;
+padding: 1rem;
+border: 2px dashed var(--amarelo-mostarda);
+border-radius: 8px;
 }
-
 .rodape {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 0.85rem;
-  color: #f5efe6;
+text-align: center;
+padding: 1.5rem 1rem;
+font-size: 0.85rem;
+color: #f5efe6;
 }
-
+.rodape a {
+color: var(--amarelo-mostarda);
+font-weight: 700;
+}
 .oculto {
-  display: none !important;
+display: none !important;
 }
