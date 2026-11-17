@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Latinus — Lanchonete do Condomínio</title>
+  <title>Latinus Burgers — Lanchonete do Condomínio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topo">
     <div class="topo-conteudo">
-      <h1>Latinus</h1>
+      <div class="marca">
+        <span class="logo-badge">🍔</span>
+        <div>
+          <h1>Latinus</h1>
+          <span class="tagline">Burgers Artesanais &amp; Combos</span>
+        </div>
+      </div>
       <div class="acoes-topo">
         <button type="button" id="btn-contraste" class="btn-acessibilidade" aria-pressed="false">
           Alto Contraste
         </button>
-        <button type="button" id="btn-alternar-visao" class="btn-secundario-topo">
+        <button type="button" id="btn-alternar-visao" class="btn-painel-topo">
           Painel do Proprietário
         </button>
       </div>
@@ -24,47 +30,80 @@
   <main class="container">
     <!-- ==================== VISÃO 1: PÁGINA PÚBLICA (MORADORES) ==================== -->
     <section id="view-publica" aria-label="Página Pública da Lanchonete">
-      <div class="card">
-        <h2>Bem-vindo ao Latinus</h2>
-        <p>Lanches artesanais em um ambiente confortável e familiar perto de você.</p>
-        <ul class="info-local">
-          <li><strong>Localização:</strong> Setor Comercial do Condomínio, Loja 04 (próximo à praça interna)</li>
-          <li><strong>Horário:</strong> Terça a Domingo, das 18h00 às 23h00</li>
-          <li><strong>Contato:</strong> (61) 99999-0000</li>
-        </ul>
-        <div class="grupo-botoes">
-          <a href="#cardapio" class="btn-primario">Ver Cardápio</a>
-          <a href="https://wa.me" target="_blank" rel="noopener" class="btn-contorno">Pedir no WhatsApp</a>
-          <a href="https://ifood.com.br" target="_blank" rel="noopener" class="btn-contorno">Pedir no iFood</a>
+      
+      <!-- Banner Hero -->
+      <div class="hero-card">
+        <div class="hero-texto">
+          <span class="selo-destaque">📍 Setor Comercial do Condomínio • Loja 04</span>
+          <h2>Sabor artesanal bem pertinho de você!</h2>
+          <p>Ambiente confortável e familiar para aproveitar um bom lanche sem sair do condomínio.</p>
+          <ul class="info-local">
+            <li><strong>Horário:</strong> Terça a Domingo, das 18h00 às 23h00</li>
+            <li><strong>WhatsApp:</strong> (61) 99999-0000</li>
+          </ul>
+          <div class="grupo-botoes">
+            <a href="#cardapio" class="btn-primario">Ver Cardápio</a>
+            <a href="https://wa.me" target="_blank" rel="noopener" class="btn-mostarda">Pedir no WhatsApp</a>
+            <a href="https://ifood.com.br" target="_blank" rel="noopener" class="btn-contorno">Pedir no iFood</a>
+          </div>
         </div>
       </div>
 
+      <!-- Seção de Promoções Vigentes -->
       <div class="card" id="secao-promocoes-publica">
-        <h2>Promoções Ativas</h2>
+        <div class="titulo-secao">
+          <h2>🔥 Promoções Ativas</h2>
+          <span class="badge-info">Atualizado em tempo real</span>
+        </div>
         <div id="lista-promocoes-publica"></div>
       </div>
 
+      <!-- Galeria de Imagens -->
+      <div class="card" id="galeria">
+        <div class="titulo-secao">
+          <h2>📸 Nossos Destaques</h2>
+          <span class="badge-info">Fotos reais dos lanches</span>
+        </div>
+        <div class="galeria-grid">
+          <figure class="galeria-item">
+            <img src="https://unsplash.com" alt="X-Latinus Especial com hambúrguer artesanal, queijo cheddar e bacon" loading="lazy">
+            <figcaption>X-Latinus Especial</figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="https://unsplash.com" alt="Combo Duplo com dois hambúrgueres artesanais e queijo derretido" loading="lazy">
+            <figcaption>Duplo Cheddar &amp; Bacon</figcaption>
+          </figure>
+          <figure class="galeria-item">
+            <img src="https://unsplash.com" alt="Porção de batatas fritas crocantes acompanhando o combo" loading="lazy">
+            <figcaption>Fritas Crocantes da Casa</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Cardápio Completo -->
       <div class="card" id="cardapio">
-        <h2>Cardápio</h2>
+        <div class="titulo-secao">
+          <h2>🍔 Cardápio Completo</h2>
+        </div>
         <ul class="lista-produtos">
           <li>
-            <div>
+            <div class="produto-info">
               <strong>X-Latinus Especial</strong>
-              <p>Hambúrguer artesanal 160g, queijo cheddar, bacon crocante e molho da casa.</p>
+              <p>Hambúrguer artesanal 160g, queijo cheddar cremoso, bacon crocante e molho especial no pão brioche.</p>
             </div>
             <span class="preco">R$ 25,00</span>
           </li>
           <li>
-            <div>
+            <div class="produto-info">
               <strong>X-Salada Clássico</strong>
-              <p>Hambúrguer, queijo muçarela, alface americana, tomate e maionese temperada.</p>
+              <p>Hambúrguer suculento, queijo muçarela, alface americana fresca, tomate e maionese temperada.</p>
             </div>
             <span class="preco">R$ 18,00</span>
           </li>
           <li>
-            <div>
+            <div class="produto-info">
               <strong>Combo Lanche + Refri</strong>
-              <p>X-Burger completo + porção de batata frita + refrigerante lata.</p>
+              <p>X-Burger completo + porção individual de batata frita crocante + refrigerante lata gelado.</p>
             </div>
             <span class="preco">R$ 25,00</span>
           </li>
@@ -76,9 +115,9 @@
     <section id="view-painel" class="oculto" aria-label="Painel do Proprietário">
       
       <!-- TELA 1A: LOGIN -->
-      <div id="tela-login" class="card">
+      <div id="tela-login" class="card painel-box">
         <h2>Painel do Proprietário</h2>
-        <p class="subtitulo">Entre para cadastrar promoções e divulgar o Latinus.</p>
+        <p class="subtitulo">Entre para cadastrar promoções e divulgar o Latinus aos moradores.</p>
         <form id="form-login" novalidate>
           <div class="campo-grupo">
             <label for="login-usuario">Usuário</label>
@@ -96,7 +135,7 @@
       </div>
 
       <!-- TELA 1B: MENU INICIAL DO PAINEL -->
-      <div id="tela-menu" class="card oculto">
+      <div id="tela-menu" class="card painel-box oculto">
         <div class="cabecalho-interno">
           <h2>Painel do proprietário</h2>
           <button type="button" id="btn-sair" class="btn-pequeno">Sair</button>
@@ -105,13 +144,13 @@
         <div class="menu-empilhado">
           <button type="button" id="btn-ir-nova-promocao" class="btn-primario largura-total">+ Nova promoção</button>
           <button type="button" id="btn-ir-produtos" class="btn-contorno largura-total">Produtos</button>
-          <button type="button" id="btn-ir-divulgar" class="btn-contorno largura-total">Divulgar</button>
+          <button type="button" id="btn-ir-divulgar" class="btn-mostarda largura-total">Divulgar</button>
         </div>
         <p class="dica-uso">Dica: crie uma promoção e depois toque em "Divulgar" para enviar o link ao grupo dos moradores.</p>
       </div>
 
       <!-- TELA 2: NOVA PROMOÇÃO -->
-      <div id="tela-nova-promocao" class="card oculto">
+      <div id="tela-nova-promocao" class="card painel-box oculto">
         <div class="cabecalho-interno">
           <button type="button" id="btn-voltar-menu-1" class="btn-pequeno">&lt; Voltar</button>
           <h2>Nova promoção</h2>
@@ -143,7 +182,7 @@
       </div>
 
       <!-- TELA 3: DIVULGAR -->
-      <div id="tela-divulgar" class="card oculto">
+      <div id="tela-divulgar" class="card painel-box oculto">
         <div class="alerta-sucesso" role="status">
           <strong>✔ Promoção salva!</strong>
           <p id="resumo-promo-salva">Válida de 17/11/2026 a 22/11/2026</p>
@@ -154,7 +193,7 @@
           <textarea id="texto-whatsapp" rows="4" readonly></textarea>
         </div>
         <div class="menu-empilhado">
-          <button type="button" id="btn-copiar-whatsapp" class="btn-primario largura-total">Copiar texto do WhatsApp</button>
+          <button type="button" id="btn-copiar-whatsapp" class="btn-mostarda largura-total">Copiar texto do WhatsApp</button>
           <button type="button" id="btn-copiar-link" class="btn-contorno largura-total">Copiar link</button>
           <button type="button" id="btn-ver-qrcode" class="btn-contorno largura-total">Ver QR Code</button>
           <button type="button" id="btn-voltar-menu-2" class="btn-pequeno">Voltar ao menu</button>
@@ -167,6 +206,10 @@
 
     </section>
   </main>
+
+  <footer class="rodape">
+    <p>Latinus Burgers • Setor Comercial do Condomínio • ODS 8 (Meta 8.3)</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
