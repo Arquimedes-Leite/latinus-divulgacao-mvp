@@ -1,3 +1,4 @@
+### Para a faculdade - trabalho para portfólio da faculdade
 # Lanchonete Latinus — Divulgação MVP
 
 MVP web desenvolvido para a divulgação da **Lanchonete Latinus**, reunindo em uma interface simples a exibição pública de produtos e um painel rápido para atualização de ofertas.
