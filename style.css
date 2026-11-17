@@ -1,17 +1,3 @@
-/*
- * ALTERAÇÕES (correção do Alto Contraste) — sugestão de commit:
- * "fix(acessibilidade): melhora o modo de alto contraste"
- *
- * - Links sem classe passam a ser amarelos e sublinhados (antes ficavam azul-padrão sobre preto).
- * - Foco de teclado branco e mais espesso no alto contraste (o laranja sumia em botões amarelos/ciano).
- * - Placeholders dos campos em branco opaco (antes cinza com baixo contraste).
- * - Botões .btn-mostarda, .btn-mostarda-topo e .btn-comprar-moeda: texto preto sobre ciano.
- * - .btn-contorno-claro, galeria, divisórias da lista de produtos e caixas: bordas brancas visíveis.
- * - Botão "Alto Contraste" ganha estado visual quando pressionado ([aria-pressed="true"]).
- * - Moeda ativa com borda preta e moeda-prêmio com borda sólida amarela (legíveis sem depender só da cor).
- * - Suporte a @media (forced-colors: active) do Windows.
- * - Novas regras ficam no FINAL do arquivo, na seção "ALTO CONTRASTE — CORREÇÕES".
- */
 :root {
   --vermelho-ketchup: #c62828;
   --vermelho-escuro: #8e0000;
