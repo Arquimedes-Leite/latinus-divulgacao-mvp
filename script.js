@@ -1,3 +1,4 @@
+// Regras de negócio puras (testáveis via Node.js e usadas no navegador)
 function validarPromocao(titulo, dataInicio, dataFim, dataHoje) {
   if (typeof titulo !== 'string' || titulo.trim().length < 3) {
     return { valido: false, erro: 'Informe um título válido para a promoção (mínimo 3 caracteres).' };
