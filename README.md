@@ -1,6 +1,6 @@
 # Hot Dog Latinus — Divulgação MVP
 
-> Trabalho de portfólio da faculdade (Análise e Desenvolvimento de Sistemas - Projeto de Software — UDF, Brasília-DF).
+> Trabalho de portfólio da faculdade (Análise e desenvolvimento de Sistemas - Projeto de Software — UDF, Brasília-DF).
 
 MVP web para divulgar o **Hot Dog Latinus**, lanchonete do Condomínio Mansões Entrelagos (Itapoã, Brasília-DF). O objetivo é resolver a baixa visibilidade do comércio dentro do condomínio, com uma página pública para os moradores e um painel simples para o proprietário.
 
@@ -55,6 +55,12 @@ node --test --experimental-test-coverage
 ```
 
 O mesmo comando roda automaticamente no GitHub Actions a cada `push` e `pull request` na branch `main`.
+
+## Decisões de escopo e privacidade
+* **Foco em divulgação, não em pedidos.** O sistema não recebe nem processa pedidos. Os pedidos continuam sendo feitos pelo iFood ou pelo WhatsApp. O botão de compra do cardápio apenas simula o registro de uma compra para o Clube Fidelidade.
+* **Clube Fidelidade como evolução do MVP.** Foi adicionado para incentivar o retorno dos moradores (10 compras = 1 lanche grátis). Não altera o objetivo central do projeto.
+* **Minimização de dados.** O cadastro de cliente é opcional e serve só ao Clube Fidelidade. Nenhum dado é enviado a servidor, banco de dados ou terceiros: tudo existe apenas na memória do navegador e some ao recarregar a página.
+* **Próximo passo, se houver uso real.** Antes de armazenar dados de moradores, seria preciso definir base legal e política de privacidade conforme a LGPD, além de autenticação real (OAuth) no lugar da validação simulada.
 
 ## Limitações conhecidas
 Este é um protótipo de front-end. Contas, compras e promoções ficam apenas na memória do navegador e se perdem ao recarregar a página. A validação de conta Google verifica apenas o formato do e-mail, sem autenticação real (OAuth). O login do proprietário é de demonstração. Os preços e itens do cardápio são ilustrativos e devem ser conferidos com o proprietário.
